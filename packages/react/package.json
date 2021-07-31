@@ -1,0 +1,68 @@
+{
+  "name": "@deepui/react",
+  "version": "0.1.10",
+  "sideEffects": false,
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "start": "nodemon --watch src --exec yarn build -e ts,tsx",
+    "build": "concurrently yarn:build:*",
+    "test": "jest --env=jsdom --passWithNoTests",
+    "lint": "concurrently yarn:lint:*",
+    "version": "yarn build",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --source-maps",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist/cjs --source-maps",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
+    "test:cov": "yarn test --coverage",
+    "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
+    "lint:types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "dependencies": {
+    "@deepui/alert": "0.1.7",
+    "@deepui/avatar": "0.1.7",
+    "@deepui/badge": "0.1.5",
+    "@deepui/breadcrumb": "0.1.6",
+    "@deepui/button": "0.1.6",
+    "@deepui/checkbox": "0.2.5",
+    "@deepui/code": "0.1.5",
+    "@deepui/divider": "0.1.5",
+    "@deepui/dot": "0.1.5",
+    "@deepui/forms": "0.2.0",
+    "@deepui/icon": "0.1.6",
+    "@deepui/image": "0.1.6",
+    "@deepui/kbd": "0.1.5",
+    "@deepui/link": "0.1.5",
+    "@deepui/message": "0.1.7",
+    "@deepui/notification": "0.1.8",
+    "@deepui/radio": "0.1.7",
+    "@deepui/spinner": "0.1.5",
+    "@deepui/switch": "0.1.7",
+    "@deepui/tag": "0.1.7",
+    "@deepui/theme": "0.3.0",
+    "@deepui/utils": "^0.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.6",
+    "react-dom": ">=16.8.6"
+  }
+}
