@@ -2,7 +2,8 @@ import { Transition } from "@headlessui/react";
 import {
   ViewGridIcon,
   BeakerIcon,
-  ColorSwatchIcon
+  ColorSwatchIcon,
+  BookOpenIcon
 } from "@heroicons/react/outline";
 import { Button, Icon, cx } from "@deepui/react";
 import * as React from "react";
@@ -44,6 +45,17 @@ export const mainNavigation = [
     icon: ColorSwatchIcon,
     title: "Color Mode",
     path: "/color-mode"
+  },
+  {
+    icon: BookOpenIcon,
+    title: "Architecture",
+    path: "/architecture"
+  },
+  {
+    icon: null,
+    title: "Architecture",
+    path: "/architecture",
+    hidden: true
   }
 ];
 
