@@ -14,7 +14,7 @@ export const lightScheme: ColorScheme = {
       foreground: colors.gray["900"],
       muted: colors.gray["700"],
     },
-    primary: colors.teal,
+    primary: colors.blue,
     neutral: colors.gray,
   },
 };
@@ -32,7 +32,7 @@ export const darkScheme: ColorScheme = {
       foreground: colors.gray["100"],
       muted: colors.gray["300"],
     },
-    primary: colors.teal,
+    primary: colors.blue,
     neutral: colors.gray,
   },
 };

@@ -60,6 +60,7 @@ module.exports = {
         },
       }),
       colors: {
+        blue: colors.blue,
         teal: colors.teal,
         orange: colors.orange,
       },
@@ -70,6 +71,10 @@ module.exports = {
       borderColor: {
         inherit: "inherit",
       },
+      fontFamily: {
+        'sans': ['Untitled Sans', '-apple-system', 'system-ui', 'sans-serif'],
+        'mono': ['Söhne Mono', 'menlo', 'monospace']
+      }
     },
   },
   variants: {
