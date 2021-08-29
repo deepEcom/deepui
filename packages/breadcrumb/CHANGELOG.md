@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/deepecom/deepui/compare/@deepui/breadcrumb@0.1.6...@deepui/breadcrumb@0.1.7) (2021-08-28)
+
+**Note:** Version bump only for package @deepui/breadcrumb
+
+
+
+
+
+
 ## [0.1.6](https://github.com/deepecom/deepui/compare/@deepui/breadcrumb@0.1.5...@deepui/breadcrumb@0.1.6) (2021-07-07)
 
 **Note:** Version bump only for package @deepui/breadcrumb

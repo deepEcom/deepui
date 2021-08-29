@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.12](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.10...@deepui/react@0.1.12) (2021-08-28)
+
+**Note:** Version bump only for package @deepui/react
+
+
+
+
+
 ## [0.1.10](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.9...@deepui/react@0.1.10) (2021-07-15)
 
 **Note:** Version bump only for package @deepui/react

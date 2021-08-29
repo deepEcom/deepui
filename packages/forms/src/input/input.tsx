@@ -63,12 +63,13 @@ export const Input = React.forwardRef<HTMLElement, InputProps>((props, ref) => {
     "aria-describedby": ariaDescribedby,
     className,
     type = "text",
+    id,
     ...rest
   } = props;
 
-  const { readOnly, disabled, invalid, required } = useFormControl(props);
+  const { readOnly, disabled, invalid, required, ...formControl } = useFormControl(props);
   const classes = useInputClass({ size, variant, disabled });
-
+  
   return (
     <Comp
       ref={ref}
@@ -84,6 +85,7 @@ export const Input = React.forwardRef<HTMLElement, InputProps>((props, ref) => {
       data-color={color ? color : undefined}
       className={cx(classes, className)}
       type={type}
+      id={id || formControl.id}
       {...rest}
     />
   );

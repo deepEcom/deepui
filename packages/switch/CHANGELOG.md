@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## [0.1.9](https://github.com/deepecom/deepui/compare/@deepui/switch@0.1.7...@deepui/switch@0.1.9) (2021-08-29)
+
+**Note:** Version bump only for package @deepui/switch
+
+
+
+
+
 
 ## [0.1.7](https://github.com/deepecom/deepui/compare/@deepui/switch@0.1.6...@deepui/switch@0.1.7) (2021-07-15)
 

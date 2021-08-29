@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useForm } from "react-hook-form";
 
 import {
   Button,
@@ -6,6 +7,8 @@ import {
   FormControl,
   FormLabel,
   FormHelperText,
+  FormErrorMessage,
+  RequiredIndicator,
   Divider,
   Input,
   IconButton,
@@ -39,6 +42,7 @@ import {
   RadioGroup,
   Disclosure,
   Transition,
+  Tab
 } from "@headlessui/react";
 import {
   GiftIcon,
@@ -93,6 +97,8 @@ const scope = {
   FormControl,
   FormLabel,
   FormHelperText,
+  FormErrorMessage,
+  RequiredIndicator,
   Divider,
   Input,
   IconButton,
@@ -124,6 +130,7 @@ const scope = {
   RadioGroup,
   Disclosure,
   Transition,
+  Tab,
   // Radix
   Popover,
   Tooltip,
@@ -132,6 +139,7 @@ const scope = {
   Slider,
   //
   React,
+  useForm,
 };
 
 export default scope;

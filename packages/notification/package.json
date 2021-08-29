@@ -1,6 +1,6 @@
 {
   "name": "@deepui/notification",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "sideEffects": false,
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -37,10 +37,10 @@
     "react": "^17.0.2"
   },
   "dependencies": {
-    "@deepui/button": "0.1.6",
-    "@deepui/icon": "0.1.6",
-    "@deepui/theme": "0.3.0",
-    "@deepui/toast": "0.1.5",
+    "@deepui/button": "0.1.7",
+    "@deepui/icon": "0.1.7",
+    "@deepui/theme": "0.3.1",
+    "@deepui/toast": "0.1.6",
     "@deepui/utils": "^0.1.0"
   },
   "peerDependencies": {

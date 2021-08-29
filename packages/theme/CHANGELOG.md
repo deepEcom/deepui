@@ -2,13 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## [0.3.1](https://github.com/deepecom/deepui/compare/@deepui/theme@0.3.0...@deepui/theme@0.3.1) (2021-08-28)
+
+**Note:** Version bump only for package @deepui/theme
+
+
+
+
 
 # [0.3.0](https://github.com/deepecom/deepui/compare/@deepui/theme@0.2.2...@deepui/theme@0.3.0) (2021-07-02)
 
 
 ### Features
 
-* **theme:** add tailwind color ([050b845](https://github.com/deepecom/deepui/commit/050b845bf6dc4d5c999d212ce69378e389a49a74))
+* **theme:** add tailwind color
 
 
 
@@ -19,8 +26,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **theme & link:** add tw colors & support focus ring link ([5065202](https://github.com/deepecom/deepui/commit/5065202c07616ad1b69e0b07f9391e395e55f409))
-
+* **theme & link:** add tw colors & support focus ring link
 
 
 
@@ -30,7 +36,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **theme:** theme variable not re-set ([4cfcb3a](https://github.com/deepecom/deepui/commit/4cfcb3ab9c674f958af6b272a9390b750b0564b1))
+* **theme:** theme variable not re-set
 
 
 
@@ -41,7 +47,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **theme:** add cursor & radius to variable ([e176c24](https://github.com/deepecom/deepui/commit/e176c24def39299f62b6352183c174d1f3a1bc69))
+* **theme:** add cursor & radius to variable
 
 
 
@@ -52,4 +58,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* thememing not work with nextjs ([eadfc73](https://github.com/deepecom/deepui/commit/eadfc732a9d9995ff8b46bceae51631fa1800b2e))
+* thememing not work with nextjs
