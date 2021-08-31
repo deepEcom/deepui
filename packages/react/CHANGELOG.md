@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+## [0.1.13](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.12...@deepui/react@0.1.13) (2021-08-31)
+
+* Added deepui stacked-carousel
+
+
 ## [0.1.12](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.10...@deepui/react@0.1.12) (2021-08-28)
 
 **Note:** Version bump only for package @deepui/react

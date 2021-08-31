@@ -16,10 +16,9 @@ export * from "@deepui/message";
 export * from "@deepui/notification";
 export * from "@deepui/radio";
 export * from "@deepui/spinner";
+export * from "@deepui/stacked-carousel";
 export * from "@deepui/switch";
 export * from "@deepui/tag";
 export * from "@deepui/theme";
 export * from "@deepui/utils";
-
-
 

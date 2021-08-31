@@ -1,6 +1,6 @@
 {
-  "name": "@deepui/react",
-  "version": "0.1.13",
+  "name": "@deepui/stacked-carousel",
+  "version": "0.1.0",
   "sideEffects": false,
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -34,36 +34,14 @@
     "lint:types": "tsc --noEmit"
   },
   "devDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^17.0.2"
   },
   "dependencies": {
-    "@deepui/alert": "0.1.8",
-    "@deepui/avatar": "0.1.8",
-    "@deepui/badge": "0.1.6",
-    "@deepui/breadcrumb": "0.1.7",
-    "@deepui/button": "0.1.7",
-    "@deepui/checkbox": "0.2.7",
-    "@deepui/code": "0.1.6",
-    "@deepui/divider": "0.1.6",
-    "@deepui/dot": "0.1.6",
-    "@deepui/forms": "0.3.1",
     "@deepui/icon": "0.1.7",
-    "@deepui/image": "0.1.7",
-    "@deepui/kbd": "0.1.6",
-    "@deepui/link": "0.1.6",
-    "@deepui/message": "0.1.8",
-    "@deepui/notification": "0.1.9",
-    "@deepui/radio": "0.1.9",
-    "@deepui/spinner": "0.1.6",
-    "@deepui/stacked-carousel": "0.1.0",
-    "@deepui/switch": "0.1.9",
-    "@deepui/tag": "0.1.8",
     "@deepui/theme": "0.3.1",
     "@deepui/utils": "^0.1.0"
   },
   "peerDependencies": {
-    "react": ">=16.8.6",
-    "react-dom": ">=16.8.6"
+    "react": ">=16.8.6"
   }
 }
