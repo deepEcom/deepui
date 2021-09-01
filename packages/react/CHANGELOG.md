@@ -6,7 +6,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.1.13](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.12...@deepui/react@0.1.13) (2021-08-31)
 
-* Added deepui stacked-carousel
+* Added deepui stacked-carousel, multi-carousel
 
 
 ## [0.1.12](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.10...@deepui/react@0.1.12) (2021-08-28)
