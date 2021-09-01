@@ -13,6 +13,7 @@ export * from "@deepui/image";
 export * from "@deepui/kbd";
 export * from "@deepui/link";
 export * from "@deepui/message";
+export * from "@deepui/multi-carousel";
 export * from "@deepui/notification";
 export * from "@deepui/radio";
 export * from "@deepui/spinner";
