@@ -18,8 +18,34 @@ const responsive = {
   }
 };
 
-export class WithScrollbar extends React.Component {
-  state = { additionalTransfrom: 0 };
+interface Responsive {
+  [key: string]: {
+    breakpoint: {
+      max: number,
+      min: number
+    },
+    items: number
+  }
+}
+
+export interface WithScrollbarProps {
+  responsive?: Responsive
+} 
+
+export interface WithScrollbarState {
+  additionalTransform: number
+}
+
+export class WithScrollbar extends React.Component<WithScrollbarProps, WithScrollbarState> {
+
+  public static defaultProps = {
+    responsive
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = { additionalTransfrom: 0 };
+  }
   render() {
     const CustomSlider = ({ carouselState }) => {
       let value = 0;
@@ -39,7 +65,7 @@ export class WithScrollbar extends React.Component {
       }
       const { transform, deviceType, totalItems } = carouselState;
 
-      const itemLength = this.props.responsive ? this.props.responsive[deviceType].items : responsive[deviceType].items
+      const itemLength = this.props.responsive[deviceType].items
       
       // console.log(totalItems, deviceType, itemLength)
       return (
@@ -132,7 +158,7 @@ export class WithScrollbar extends React.Component {
         partialVisbile={false}
         customButtonGroup={<CustomSlider />}
         itemClass="slider-image-item"
-        responsive={responsive}
+        responsive={this.props.responsive}
         containerClass="carousel-container-with-scrollbar"
         // additionalTransfrom={-this.state.additionalTransfrom}
         beforeChange={(nextSlide) => {

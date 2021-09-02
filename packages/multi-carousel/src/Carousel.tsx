@@ -15,8 +15,8 @@ import {
   getInitialSlideInInfiniteMode,
   getInitialState,
   getItemClientSideWidth,
-  // isInLeftEnd,
-  // isInRightEnd,
+  isInLeftEnd,
+  isInRightEnd,
   notEnoughChildren,
   populateNextSlides,
   populatePreviousSlides,
@@ -25,6 +25,7 @@ import {
 } from "./utils"
 import { getTransform } from "./utils/common";
 import CarouselItems from "./CarouselItems";
+import { LeftArrow, RightArrow } from "./Arrows";
 
 const defaultTransitionDuration = 400;
 const defaultTransition = "transform 400ms ease-in-out";
@@ -673,6 +674,29 @@ export class Carousel extends React.Component<CarouselProps, CarouselInternalSta
     return this.state;
   }
 
+  public renderLeftArrow(disbaled: boolean): React.ReactNode {
+    const { customLeftArrow } = this.props;
+    return (
+      <LeftArrow
+        customLeftArrow={customLeftArrow}
+        getState={() => this.getState()}
+        previous={this.previous}
+        disabled={disbaled}
+      />
+    );
+  }
+  public renderRightArrow(disbaled: boolean): React.ReactNode {
+    const { customRightArrow } = this.props;
+    return (
+      <RightArrow
+        customRightArrow={customRightArrow}
+        getState={() => this.getState()}
+        next={this.next}
+        disabled={disbaled}
+      />
+    );
+  }
+
   public renderButtonGroups(): React.ReactElement<any> | null {
     const { customButtonGroup } = this.props;
     // console.log(customButtonGroup)
@@ -711,7 +735,12 @@ export class Carousel extends React.Component<CarouselProps, CarouselInternalSta
       customTransition,
       additionalTransfrom,
       className,
-      renderButtonGroupOutside
+      renderButtonGroupOutside,
+      arrows,
+      removeArrowOnDeviceType,
+      deviceType,
+      infinite,
+      renderArrowsWhenDisabled
     } = this.props
 
     const { shouldRenderOnSSR, shouldRenderAtAll } = getInitialState(
@@ -719,8 +748,20 @@ export class Carousel extends React.Component<CarouselProps, CarouselInternalSta
       this.props
     );
 
-    // console.log('SHOULDDD RENDERRR', shouldRenderAtAll)
-
+    const isLeftEndReach = isInLeftEnd(this.state);
+    const isRightEndReach = isInRightEnd(this.state);
+    const shouldShowArrows =
+      arrows &&
+      !(
+        removeArrowOnDeviceType &&
+        ((deviceType && removeArrowOnDeviceType.indexOf(deviceType) > -1) ||
+          (this.state.deviceType &&
+            removeArrowOnDeviceType.indexOf(this.state.deviceType) > -1))
+      ) &&
+      !notEnoughChildren(this.state) &&
+      shouldRenderAtAll;
+    const disableLeftArrow = !infinite && isLeftEndReach;
+    const disableRightArrow = !infinite && isRightEndReach;
     const currentTransform = getTransform(this.state, this.props);
 
     return (
@@ -779,13 +820,13 @@ export class Carousel extends React.Component<CarouselProps, CarouselInternalSta
             left: calc(4% + 1px);
           }
           .react-multiple-carousel__arrow--left::before {
-            content: "\e824";
+            content: "<";
           }
           .react-multiple-carousel__arrow--right {
             right: calc(4% + 1px);
           }
           .react-multiple-carousel__arrow--right::before {
-            content: "\e825";
+            content: ">";
           }
           
           .react-multi-carousel-dot-list {
@@ -864,6 +905,12 @@ export class Carousel extends React.Component<CarouselProps, CarouselInternalSta
           >
             {this.renderCarouselItems()}
           </ul>
+          {shouldShowArrows &&
+            (!disableLeftArrow || renderArrowsWhenDisabled) &&
+            this.renderLeftArrow(disableLeftArrow)}
+           {shouldShowArrows &&
+            (!disableRightArrow || renderArrowsWhenDisabled) &&
+            this.renderRightArrow(disableRightArrow)}
           {shouldRenderAtAll &&
             !renderButtonGroupOutside &&
             this.renderButtonGroups()}
