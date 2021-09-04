@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.1](https://github.com/deepecom/deepui/compare/@deepui/core@0.5.0...@deepui/core@0.5.1) (2021-09-04)
+
+
+### Features
+
+* **pagination:** add pagination component
+
+
+
+# [0.5.0](https://github.com/deepecom/deepui/compare/@deepui/core@0.4.1...@deepui/core@0.5.0) (2021-08-01)
+
+
+### Features
+
+* **docs:** example form-control using react hook form
+* **form-control:** add form-error-message & required-indicator
+
+
+
 # [0.5.0](https://github.com/deepecom/deepui/compare/@deepui/core@0.4.1...@deepui/core@0.5.0) (2021-08-01)
 
 

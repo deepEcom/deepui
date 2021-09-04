@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.14](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.13...@deepui/react@0.1.14) (2021-09-04)
+### Features
+
+* **pagination:** add pagination component
 
 ## [0.1.13](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.12...@deepui/react@0.1.13) (2021-08-31)
 

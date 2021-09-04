@@ -20,6 +20,7 @@ const Kbd = require("./components/kbd");
 const Link = require("./components/link");
 const Message = require("./components/message");
 const Notification = require("./components/notification");
+const Pagination = require("./components/pagination");
 const Radio = require("./components/radio");
 const Switch = require("./components/switch");
 const Tag = require("./components/tag");
@@ -42,6 +43,7 @@ const components = [
   Link,
   Message,
   Notification,
+  Pagination,
   Radio,
   Switch,
   Tag,
