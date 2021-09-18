@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.14](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.14...@deepui/react@0.1.15) (2021-09-18)
+### Features
+
+* **selectbox:** add selectbox component
+* **table:** add table component
+* **dialog:** add dialog component
+
 ## [0.1.14](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.13...@deepui/react@0.1.14) (2021-09-04)
 ### Features
 

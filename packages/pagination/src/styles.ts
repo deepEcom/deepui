@@ -2,18 +2,18 @@ import { cx } from "@deepui/utils";
 import { createMemoClass } from "@deepui/theme";
 
 const variants = {
-  solid: "tag-solid",
-  outline: "tag-outline",
-  light: "tag-light",
+  solid: "pagination-solid",
+  outline: "pagination-outline",
+  light: "pagination-light",
 };
 
 const sizes = {
-  sm: "tag-sm",
-  md: "tag-md",
-  lg: "tag-lg",
-  xl: "tag-xl",
+  sm: "pagination-sm",
+  md: "pagination-md",
+  lg: "pagination-lg",
+  xl: "pagination-xl",
 };
 
-export const useTagClass = createMemoClass((props) => {
-  return cx("tag", sizes[props.size], variants[props.variant]);
+export const usePaginationClass = createMemoClass((props) => {
+  return cx("pagination", sizes[props.size], variants[props.variant]);
 });
