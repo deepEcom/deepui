@@ -15,7 +15,7 @@ import { Popover } from "./Popover";
 
 export { Item } from "react-stately";
 
-export function Select<T extends object>(props: AriaSelectProps<T>) {
+export function SelectBox<T extends object>(props: AriaSelectProps<T>) {
   // Create state based on the incoming props
   let state = useSelectState(props);
 

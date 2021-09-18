@@ -1,4 +1,4 @@
-import { ComboBox, Item, Select, SearchAutocomplete, Section } from "../src";
+import { ComboBox, Item, SelectBox, SearchAutocomplete, Section } from "../src";
 
 export default {
   title: "SelectBox",
@@ -22,14 +22,14 @@ export const combobox = () => (
 );
 
 export const selectbox = () => (
-  <Select label="Favorite Animal">
+  <SelectBox label="Favorite Animal">
     <Item key="red panda">Red Panda</Item>
     <Item key="cat">Cat</Item>
     <Item key="dog">Dog</Item>
     <Item key="aardvark">Aardvark</Item>
     <Item key="kangaroo">Kangaroo</Item>
     <Item key="snake">Snake</Item>
-  </Select>
+  </SelectBox>
 )
 
 export const searchautocomplete = () => (
