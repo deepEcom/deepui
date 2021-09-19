@@ -4,6 +4,7 @@ import {
   useEffect,
   useRef,
   useState,
+  default as React
 } from 'react'
 import { animated, useSpring, UseSpringProps } from 'react-spring'
 import FocusTrap from 'focus-trap-react'
