@@ -1,3 +1,4 @@
+import {useRef} from 'react';
 import {Cell, Column, Row, TableBody, TableHeader} from '@react-stately/table';
 import { Table } from "../src";
 
@@ -55,4 +56,30 @@ export const basic = () => (
     <input aria-label="Focusable after" placeholder="Focusable after" />
   </div>
 );
+
+export const heightTest = () => {
+  const scrollRef = useRef()
+  return (
+    <div ref={scrollRef} style={{ height: 300, overflow: 'hidden' }}>
+      <input aria-label="Focusable before" placeholder="Focusable before" />
+      <Table scrollRef={scrollRef} aria-label="Table with selection">
+        <TableHeader columns={columns}>
+          {column => (
+            <Column key={column.uid}>
+              {column.name}
+            </Column>
+          )}
+        </TableHeader>
+        <TableBody items={rows}>
+          {item => (
+            <Row>
+              {columnKey => <Cell>{item[columnKey]}</Cell>}
+            </Row>
+          )}
+        </TableBody>
+      </Table>
+      <input aria-label="Focusable after" placeholder="Focusable after" />
+    </div>
+  );
+};
 

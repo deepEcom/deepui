@@ -15,7 +15,7 @@ export function Table(props) {
   let ref = useRef();
   let bodyRef = useRef();
   let {collection} = state;
-  let {gridProps} = useTable({...props, scrollRef: bodyRef}, state, ref);
+  let {gridProps} = useTable({...props, scrollRef: props.scrollRef ? props.scrollRef : bodyRef}, state, ref);
 
   return (
     <table {...gridProps} ref={ref} className={cx("min-w-full divide-y divide-gray-200", props.className)}>
