@@ -35,7 +35,8 @@ export function SelectBox<T extends object>(props: CustomAriaSelectProps<T>) {
   if (props.ref) {
     React.useImperativeHandle(props.ref, () => ({
       focus: () => {
-        ref && ref.current.focus();
+        // @ts-ignore
+        ref && ref.current && ref.current.focus();
       }
     }))
   }

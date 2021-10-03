@@ -35,7 +35,8 @@ export function SearchAutocomplete<T extends object>(props: CustomComboBoxProps<
   if (props.ref) {
     React.useImperativeHandle(props.ref, () => ({
       focus: () => {
-        inputRef && inputRef.current.focus();
+        // @ts-ignore
+        inputRef && inputRef.current && inputRef?.current.focus();
       }
     }))
   }

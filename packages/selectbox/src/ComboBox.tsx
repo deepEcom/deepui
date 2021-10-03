@@ -27,7 +27,8 @@ export function ComboBox<T extends object>(props: CustomComboBoxProps<T>) {
   if (props.ref) {
     React.useImperativeHandle(props.ref, () => ({
       focus: () => {
-        inputRef && inputRef.current.focus();
+        // @ts-ignore
+        inputRef && inputRef.current && inputRef?.current.focus();
       }
     }))
   }
