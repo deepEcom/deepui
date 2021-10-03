@@ -1,4 +1,4 @@
-// import { createMemoClass } from "@deepui/theme";
+import { cx } from "@deepui/utils";
 import { ChevronDownIcon } from "@heroicons/react/solid"
 import { useComboBoxState } from "@react-stately/combobox"
 import type { ComboBoxProps } from "@react-types/combobox"
@@ -12,26 +12,20 @@ import { Popover } from "./Popover"
 export { Item, Section } from "react-stately"
 
 interface CustomComboBoxProps<T> extends ComboBoxProps<T> {
-  ref?: any
+  layerClassName?: string
+  wrapperClassName?: string
+  inputClassName?: string
+  buttonClassName?: string
 }
 
-export function ComboBox<T extends object>(props: CustomComboBoxProps<T>) {
+function ComboBoxBase<T extends object>(props: CustomComboBoxProps<T>, ref: React.ForwardedRef<null>) {
   const { contains } = useFilter({ sensitivity: "base" })
   const state = useComboBoxState({ ...props, defaultFilter: contains })
 
   const buttonRef = React.useRef(null)
-  const inputRef = React.useRef(null)
+  const inputRef = ref ? ref : React.useRef(null)
   const listBoxRef = React.useRef(null)
   const popoverRef = React.useRef(null)
-
-  if (props.ref) {
-    React.useImperativeHandle(props.ref, () => ({
-      focus: () => {
-        // @ts-ignore
-        inputRef && inputRef.current && inputRef?.current.focus();
-      }
-    }))
-  }
 
   const { triggerProps, layerProps, layerSide } =
     useLayer({
@@ -53,6 +47,7 @@ export function ComboBox<T extends object>(props: CustomComboBoxProps<T>) {
   } = useComboBox(
     {
       ...props,
+      // @ts-ignore
       inputRef,
       buttonRef,
       listBoxRef,
@@ -64,7 +59,7 @@ export function ComboBox<T extends object>(props: CustomComboBoxProps<T>) {
   const { buttonProps } = useButton({ ...buttonTriggerProps, isDisabled: props.isDisabled }, buttonRef)
 
   return (
-    <div ref={layerProps.ref} className="relative w-full">
+    <div ref={layerProps.ref} className={cx("relative w-full", props.layerClassName)}>
       {props.label ? <label
         {...labelProps}
         className="block text-sm font-medium text-gray-700 text-left"
@@ -72,21 +67,17 @@ export function ComboBox<T extends object>(props: CustomComboBoxProps<T>) {
         {props.label}
       </label> : <label className="sr-only" aria-label="Combobox Select">Combobox Select</label>}
       <div
-        className={`w-full relative inline-flex flex-row rounded-md overflow-hidden shadow-sm border-2 ${
-          state.isFocused ? "border-primary-500" : "border-gray-300"
-        }`}
+        className={cx(`w-full relative inline-flex flex-row rounded-md overflow-hidden shadow-sm border-2`, state.isFocused ? "border-primary-500" : "border-gray-300", props.wrapperClassName)}
       >
-        <input {...inputProps} aria-label="select" ref={mergeRefs(inputRef, triggerProps.ref)} className="w-full outline-none px-3 py-1 border-none" />
+        <input {...inputProps} aria-label="select" ref={mergeRefs(inputRef, triggerProps.ref)} className={cx("w-full outline-none px-3 py-1 border-none", props.inputClassName)} />
         <button
           {...buttonProps}
           ref={mergeRefs(buttonRef, triggerProps.ref)}
           disabled={props.isDisabled}
           aria-disabled={props.isDisabled}
-          className={`px-1 bg-gray-100 cursor-default border-l-2 ${
-            state.isFocused
-              ? "border-primary-500 text-primary-600"
-              : "border-gray-300 text-gray-500"
-          }`}
+          className={cx(`px-1 bg-gray-100 cursor-default border-l-2`,  state.isFocused
+          ? "border-primary-500 text-primary-600"
+          : "border-gray-300 text-gray-500", props.buttonClassName)}
         >
           <ChevronDownIcon className="w-5 h-5" aria-hidden="true" />
         </button>
@@ -99,3 +90,5 @@ export function ComboBox<T extends object>(props: CustomComboBoxProps<T>) {
     </div>
   )
 }
+
+export const ComboBox = React.forwardRef(ComboBoxBase)

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { cx } from "@deepui/utils";
 import { SelectorIcon } from "@heroicons/react/solid";
 import type { AriaSelectProps } from "@react-types/select";
 import {
@@ -14,10 +15,12 @@ import { useSelectState } from "react-stately";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 
+
 export { Item } from "react-stately";
 
 interface  CustomAriaSelectProps<T> extends  AriaSelectProps<T> {
-  ref?: any
+  layerClassName?: string
+  buttonClassName?: string
 }
 
 export function SelectBox<T extends object>(props: CustomAriaSelectProps<T>) {
@@ -32,14 +35,6 @@ export function SelectBox<T extends object>(props: CustomAriaSelectProps<T>) {
     ref
   );
 
-  if (props.ref) {
-    React.useImperativeHandle(props.ref, () => ({
-      focus: () => {
-        // @ts-ignore
-        ref && ref.current && ref.current.focus();
-      }
-    }))
-  }
 
   const { triggerProps, layerProps, layerSide } =
     useLayer({
@@ -59,7 +54,7 @@ export function SelectBox<T extends object>(props: CustomAriaSelectProps<T>) {
   let { focusProps, isFocusVisible } = useFocusRing();
 
   return (
-    <div ref={layerProps.ref} className="w-full relative w-52 mt-4">
+    <div ref={layerProps.ref} className={cx("w-full relative w-52 mt-4", props.layerClassName)}>
       <div
         {...labelProps}
         className="block text-sm font-medium text-gray-700 text-left cursor-default"
@@ -75,9 +70,9 @@ export function SelectBox<T extends object>(props: CustomAriaSelectProps<T>) {
       <button
         {...mergeProps(buttonProps, focusProps)}
         ref={mergeRefs(ref, triggerProps.ref)}
-        className={`p-1 pl-3 py-1 relative inline-flex flex-row items-center justify-between rounded-md overflow-hidden cursor-default shadow-sm border-2 outline-none ${
-          isFocusVisible ? "border-primary-500" : "border-gray-300"
-        } ${state.isOpen ? "bg-gray-100" : "bg-white"}`}
+        className={
+          cx(`p-1 pl-3 py-1 relative inline-flex flex-row items-center justify-between rounded-md overflow-hidden cursor-default shadow-sm border-2 outline-none`,  isFocusVisible ? "border-primary-500" : "border-gray-300", state.isOpen ? "bg-gray-100" : "bg-white", props.buttonClassName)
+        }
       >
         <span
           {...valueProps}

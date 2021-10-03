@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import { ComboBox, Item, SelectBox, SearchAutocomplete, Section } from "../src";
 
 export default {
@@ -9,7 +10,7 @@ export default {
 };
 
 export const combobox = () => {
-
+  const customRef = useRef(null)
   return (
     <div>
       <div>
@@ -23,9 +24,13 @@ export const combobox = () => {
           </ComboBox>
       </div>
       <div style={{ height: 600, background: "red" }}>
+        <button onClick={() => {
+          // console.log(customRef)
+          customRef.current.focus()
+        }}>Focus</button>
       </div>
       <div style={{ width : 120, }}>
-        <ComboBox>
+        <ComboBox ref={customRef}>
             <Item key="red panda">Red Panda</Item>
             <Item key="cat">Cat</Item>
             <Item key="dog">Dog</Item>
@@ -38,19 +43,27 @@ export const combobox = () => {
   )
 };
 
-export const selectbox = () => (
-  <SelectBox label="Favorite Animal">
-    <Item key="red panda">Red Panda</Item>
-    <Item key="cat">Cat</Item>
-    <Item key="dog">Dog</Item>
-    <Item key="aardvark">Aardvark</Item>
-    <Item key="kangaroo">Kangaroo</Item>
-    <Item key="snake">Snake</Item>
-  </SelectBox>
-)
+export const selectbox = () => {
+  return (
+    <SelectBox label="Favorite Animal">
+      <Item key="red panda">Red Panda</Item>
+      <Item key="cat">Cat</Item>
+      <Item key="dog">Dog</Item>
+      <Item key="aardvark">Aardvark</Item>
+      <Item key="kangaroo">Kangaroo</Item>
+      <Item key="snake">Snake</Item>
+    </SelectBox>
+  )
+}
 
-export const searchautocomplete = () => (
-  <SearchAutocomplete label="Search" allowsCustomValue>
+export const searchautocomplete = () => {
+  const customRef = useRef(null)
+  return (
+    <div>
+      <button onClick={() => {
+        customRef.current.focus()
+      }}>Focus</button>
+      <SearchAutocomplete ref={customRef} label="Search" allowsCustomValue>
         <Section title="Companies">
           <Item>Chatterbridge</Item>
           <Item>Tagchat</Item>
@@ -66,4 +79,6 @@ export const searchautocomplete = () => (
           <Item>Abbie Binyon</Item>
         </Section>
       </SearchAutocomplete>
-)
+    </div>
+  )
+}
