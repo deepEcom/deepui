@@ -61,6 +61,20 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
   let { clearButtonProps } = useSearchField(searchProps, searchState, inputRef);
   let clearButtonRef = React.useRef(null);
   let { buttonProps } = useButton(clearButtonProps, clearButtonRef);
+  
+  const upHandler = (e: KeyboardEvent) => {
+    if (state.isOpen) {
+      e.stopPropagation()
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener("keyup", upHandler);
+    // Remove event listeners on cleanup
+    return () => {
+      window.removeEventListener("keyup", upHandler);
+    };
+  }, [])
 
   return (
     <div ref={layerProps.ref} className={cx("w-full relative mt-4", props.layerClassName)}>
@@ -76,6 +90,9 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
         <SearchIcon aria-hidden="true" className="w-5 h-5 text-gray-500" />
         <input
           {...inputProps}
+          onClick={e => {
+            e.stopPropagation()
+          }}
           ref={mergeRefs(inputRef, triggerProps.ref)}
           style={{ boxShadow: "none" }}
           className={cx("w-full shadow-none outline-none px-3 py-1 appearance-none  border-none", props.inputClassName)}
