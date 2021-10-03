@@ -1,6 +1,6 @@
 import * as React from "react";
+import { SelectorIcon } from "@heroicons/react/solid";
 import type { AriaSelectProps } from "@react-types/select";
-import { useSelectState } from "react-stately";
 import {
   useSelect,
   HiddenSelect,
@@ -8,32 +8,57 @@ import {
   mergeProps,
   useFocusRing
 } from "react-aria";
-import { SelectorIcon } from "@heroicons/react/solid";
+import { useLayer, mergeRefs } from "react-laag"
+import { useSelectState } from "react-stately";
 
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 
 export { Item } from "react-stately";
 
-export function SelectBox<T extends object>(props: AriaSelectProps<T>) {
+interface  CustomAriaSelectProps<T> extends  AriaSelectProps<T> {
+  ref?: any
+}
+
+export function SelectBox<T extends object>(props: CustomAriaSelectProps<T>) {
   // Create state based on the incoming props
   let state = useSelectState(props);
 
   // Get props for child elements from useSelect
   let ref = React.useRef(null);
-  let { labelProps, triggerProps, valueProps, menuProps } = useSelect(
+  let { labelProps, triggerProps: selectTriggerProps, valueProps, menuProps } = useSelect(
     props,
     state,
     ref
   );
 
+  if (props.ref) {
+    React.useImperativeHandle(props.ref, () => ({
+      focus: () => {
+        ref && ref.current.focus();
+      }
+    }))
+  }
+
+  const { triggerProps, layerProps, layerSide } =
+    useLayer({
+      isOpen: state.isOpen,
+      overflowContainer: false,
+      auto: true,
+      snap: true,
+      placement: "bottom-center",
+      possiblePlacements: ["top-center", "bottom-center"],
+      triggerOffset: 0,
+      containerOffset: 16
+    })
+
   // Get props for the button based on the trigger props from useSelect
-  let { buttonProps } = useButton(triggerProps, ref);
+  let { buttonProps } = useButton(selectTriggerProps, ref);
 
   let { focusProps, isFocusVisible } = useFocusRing();
 
   return (
-    <div className="inline-flex flex-col relative w-52 mt-4">
+    <div ref={layerProps.ref} className="w-full relative w-52 mt-4">
       <div
         {...labelProps}
         className="block text-sm font-medium text-gray-700 text-left cursor-default"
@@ -48,7 +73,7 @@ export function SelectBox<T extends object>(props: AriaSelectProps<T>) {
       />
       <button
         {...mergeProps(buttonProps, focusProps)}
-        ref={ref}
+        ref={mergeRefs(ref, triggerProps.ref)}
         className={`p-1 pl-3 py-1 relative inline-flex flex-row items-center justify-between rounded-md overflow-hidden cursor-default shadow-sm border-2 outline-none ${
           isFocusVisible ? "border-primary-500" : "border-gray-300"
         } ${state.isOpen ? "bg-gray-100" : "bg-white"}`}
@@ -70,7 +95,7 @@ export function SelectBox<T extends object>(props: AriaSelectProps<T>) {
         />
       </button>
       {state.isOpen && (
-        <Popover isOpen={state.isOpen} onClose={state.close}>
+        <Popover side={layerSide} isOpen={state.isOpen} onClose={state.close}>
           <ListBox {...menuProps} state={state} />
         </Popover>
       )}

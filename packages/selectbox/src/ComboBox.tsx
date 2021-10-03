@@ -4,13 +4,18 @@ import { useComboBoxState } from "@react-stately/combobox"
 import type { ComboBoxProps } from "@react-types/combobox"
 import * as React from "react"
 import { useButton, useComboBox, useFilter } from "react-aria"
+import { useLayer, mergeRefs } from "react-laag"
 
 import { ListBox } from "./ListBox"
 import { Popover } from "./Popover"
 
 export { Item, Section } from "react-stately"
 
-export function ComboBox<T extends object>(props: ComboBoxProps<T>) {
+interface CustomComboBoxProps<T> extends ComboBoxProps<T> {
+  ref?: any
+}
+
+export function ComboBox<T extends object>(props: CustomComboBoxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" })
   const state = useComboBoxState({ ...props, defaultFilter: contains })
 
@@ -19,8 +24,28 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T>) {
   const listBoxRef = React.useRef(null)
   const popoverRef = React.useRef(null)
 
+  if (props.ref) {
+    React.useImperativeHandle(props.ref, () => ({
+      focus: () => {
+        inputRef && inputRef.current.focus();
+      }
+    }))
+  }
+
+  const { triggerProps, layerProps, layerSide } =
+    useLayer({
+      isOpen: state.isOpen,
+      overflowContainer: false,
+      auto: true,
+      snap: true,
+      placement: "bottom-center",
+      possiblePlacements: ["top-center", "bottom-center"],
+      triggerOffset: 0,
+      containerOffset: 16
+    })
+
   const {
-    buttonProps: triggerProps,
+    buttonProps: buttonTriggerProps,
     inputProps,
     labelProps,
     listBoxProps
@@ -35,25 +60,25 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T>) {
     state
   )
 
-  const { buttonProps } = useButton({ ...triggerProps, isDisabled: props.isDisabled }, buttonRef)
+  const { buttonProps } = useButton({ ...buttonTriggerProps, isDisabled: props.isDisabled }, buttonRef)
 
   return (
-    <div className="inline-flex flex-col relative">
-      <label
+    <div ref={layerProps.ref} className="relative w-full">
+      {props.label ? <label
         {...labelProps}
         className="block text-sm font-medium text-gray-700 text-left"
       >
         {props.label}
-      </label>
+      </label> : <label className="sr-only" aria-label="Combobox Select">Combobox Select</label>}
       <div
-        className={`relative inline-flex flex-row rounded-md overflow-hidden shadow-sm border-2 ${
+        className={`w-full relative inline-flex flex-row rounded-md overflow-hidden shadow-sm border-2 ${
           state.isFocused ? "border-primary-500" : "border-gray-300"
         }`}
       >
-        <input {...inputProps} ref={inputRef} className="outline-none px-3 py-1 border-none" />
+        <input {...inputProps} aria-label="select" ref={mergeRefs(inputRef, triggerProps.ref)} className="w-full outline-none px-3 py-1 border-none" />
         <button
           {...buttonProps}
-          ref={buttonRef}
+          ref={mergeRefs(buttonRef, triggerProps.ref)}
           disabled={props.isDisabled}
           aria-disabled={props.isDisabled}
           className={`px-1 bg-gray-100 cursor-default border-l-2 ${
@@ -66,7 +91,7 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T>) {
         </button>
       </div>
       {state.isOpen && (
-        <Popover popoverRef={popoverRef} isOpen={state.isOpen} onClose={state.close}>
+        <Popover side={layerSide} popoverRef={popoverRef} isOpen={state.isOpen} onClose={state.close}>
           <ListBox {...listBoxProps} listBoxRef={listBoxRef} state={state} />
         </Popover>
       )}

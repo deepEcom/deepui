@@ -58,7 +58,7 @@
     "@deepui/notification": "0.1.9",
     "@deepui/pagination": "0.1.0",
     "@deepui/radio": "0.1.9",
-    "@deepui/selectbox": "0.1.0",
+    "@deepui/selectbox": "0.1.1",
     "@deepui/spinner": "0.1.6",
     "@deepui/stacked-carousel": "0.1.0",
     "@deepui/switch": "0.1.9",

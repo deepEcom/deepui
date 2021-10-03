@@ -1,15 +1,20 @@
 import * as React from "react";
-import type { ComboBoxProps } from "@react-types/combobox";
-import { useComboBoxState, useSearchFieldState } from "react-stately";
-import { useComboBox, useFilter, useButton, useSearchField } from "react-aria";
 import { SearchIcon, XIcon } from "@heroicons/react/solid";
+import type { ComboBoxProps } from "@react-types/combobox";
+import { useComboBox, useFilter, useButton, useSearchField } from "react-aria";
+import { useLayer, mergeRefs } from "react-laag"
+import { useComboBoxState, useSearchFieldState } from "react-stately";
 
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 
 export { Item } from "react-stately";
 
-export function SearchAutocomplete<T extends object>(props: ComboBoxProps<T>) {
+interface CustomComboBoxProps<T> extends ComboBoxProps<T> {
+  ref?: any
+}
+
+export function SearchAutocomplete<T extends object>(props: CustomComboBoxProps<T>) {
   let { contains } = useFilter({ sensitivity: "base" });
   let state = useComboBoxState({ ...props, defaultFilter: contains });
 
@@ -27,6 +32,26 @@ export function SearchAutocomplete<T extends object>(props: ComboBoxProps<T>) {
     state
   );
 
+  if (props.ref) {
+    React.useImperativeHandle(props.ref, () => ({
+      focus: () => {
+        inputRef && inputRef.current.focus();
+      }
+    }))
+  }
+
+  const { triggerProps, layerProps, layerSide } =
+    useLayer({
+      isOpen: state.isOpen,
+      overflowContainer: false,
+      auto: true,
+      snap: true,
+      placement: "bottom-center",
+      possiblePlacements: ["top-center", "bottom-center"],
+      triggerOffset: 0,
+      containerOffset: 16
+    })
+
   // Get props for the clear button from useSearchField
   let searchProps = {
     label: props.label,
@@ -40,7 +65,7 @@ export function SearchAutocomplete<T extends object>(props: ComboBoxProps<T>) {
   let { buttonProps } = useButton(clearButtonProps, clearButtonRef);
 
   return (
-    <div className="inline-flex flex-col relative mt-4">
+    <div ref={layerProps.ref} className="w-full relative mt-4">
       <label
         {...labelProps}
         className="block text-sm font-medium text-gray-700 text-left"
@@ -48,15 +73,16 @@ export function SearchAutocomplete<T extends object>(props: ComboBoxProps<T>) {
         {props.label}
       </label>
       <div
-        className={`relative px-2 inline-flex flex-row items-center rounded-md overflow-hidden shadow-sm border-2 ${
+        className={`w-full relative px-2 inline-flex flex-row items-center rounded-md overflow-hidden shadow-sm border-2 ${
           state.isFocused ? "border-primary-500" : "border-gray-300"
         }`}
       >
         <SearchIcon aria-hidden="true" className="w-5 h-5 text-gray-500" />
         <input
           {...inputProps}
-          ref={inputRef}
-          className="outline-none px-3 py-1 appearance-none  border-none"
+          ref={mergeRefs(inputRef, triggerProps.ref)}
+          style={{ boxShadow: "none" }}
+          className="w-full shadow-none outline-none px-3 py-1 appearance-none  border-none"
         />
         <button
           {...buttonProps}
@@ -69,6 +95,7 @@ export function SearchAutocomplete<T extends object>(props: ComboBoxProps<T>) {
       </div>
       {state.isOpen && (
         <Popover
+          side={layerSide}
           popoverRef={popoverRef}
           isOpen={state.isOpen}
           onClose={state.close}

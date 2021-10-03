@@ -118,7 +118,7 @@ function TableRow({item, children, state, className}) {
       //   outline: isFocusVisible ? '2px solid orange' : 'none'
       // }}
       className={cx([
-        isSelected ? 'bg-primary-500 text-white' : item.index % 2 ? 'bg-gray-50' : 'bg-white',
+        isSelected ? 'bg-primary-100 text-white' : item.index % 2 ? 'bg-gray-50' : 'bg-white',
         isFocusVisible ? 'outline outline-black' : 'outline-none',
         className
       ])}

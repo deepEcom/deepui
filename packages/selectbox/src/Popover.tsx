@@ -1,3 +1,4 @@
+import { cx } from "@deepui/utils"
 import * as React from "react"
 import { DismissButton, FocusScope, useOverlay } from "react-aria"
 
@@ -5,6 +6,7 @@ interface PopoverProps {
   popoverRef?: React.RefObject<HTMLDivElement>
   children: React.ReactNode
   isOpen?: boolean
+  side: string
   onClose: () => void
 }
 
@@ -31,7 +33,7 @@ export function Popover(props: PopoverProps) {
       <div
         {...overlayProps}
         ref={popoverRef}
-        className="absolute z-10 top-full w-full shadow-lg border border-gray-300 bg-white rounded-md mt-2"
+        className={cx("absolute z-10 w-full shadow-lg border border-gray-300 bg-white rounded-md mt-2", props.side === "bottom" ? "top-full" : "bottom-full")}
       >
         {children}
         <DismissButton onDismiss={onClose} />

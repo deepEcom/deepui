@@ -8,18 +8,35 @@ export default {
   },
 };
 
-export const combobox = () => (
-  <div>
-    <ComboBox label="Favorite Animal">
-        <Item key="red panda">Red Panda</Item>
-        <Item key="cat">Cat</Item>
-        <Item key="dog">Dog</Item>
-        <Item key="aardvark">Aardvark</Item>
-        <Item key="kangaroo">Kangaroo</Item>
-        <Item key="snake">Snake</Item>
-      </ComboBox>
-  </div>
-);
+export const combobox = () => {
+
+  return (
+    <div>
+      <div>
+        <ComboBox label="Favorite Animal">
+            <Item key="red panda">Red Panda</Item>
+            <Item key="cat">Cat</Item>
+            <Item key="dog">Dog</Item>
+            <Item key="aardvark">Aardvark</Item>
+            <Item key="kangaroo">Kangaroo</Item>
+            <Item key="snake">Snake</Item>
+          </ComboBox>
+      </div>
+      <div style={{ height: 600, background: "red" }}>
+      </div>
+      <div style={{ width : 120, }}>
+        <ComboBox>
+            <Item key="red panda">Red Panda</Item>
+            <Item key="cat">Cat</Item>
+            <Item key="dog">Dog</Item>
+            <Item key="aardvark">Aardvark</Item>
+            <Item key="kangaroo">Kangaroo</Item>
+            <Item key="snake">Snake</Item>
+          </ComboBox>
+      </div>
+    </div>
+  )
+};
 
 export const selectbox = () => (
   <SelectBox label="Favorite Animal">
