@@ -1,13 +1,15 @@
 import { CheckIcon } from "@heroicons/react/solid"
 import type { AriaListBoxOptions } from "@react-aria/listbox"
 import type { ListState } from "@react-stately/list"
-import type { Node } from "@react-types/shared"
+import type { LoadingState, Node } from "@react-types/shared"
 import * as React from "react"
 import { useListBox, useListBoxSection, useOption } from "react-aria"
-
+import { useKeyboard } from "@react-aria/interactions";
 interface ListBoxProps extends AriaListBoxOptions<unknown> {
   listBoxRef?: React.RefObject<HTMLUListElement>
   state: ListState<unknown>
+  loadingState?: LoadingState
+  onLoadMore?: () => void
 }
 
 interface SectionProps {
@@ -25,11 +27,21 @@ export function ListBox(props: ListBoxProps) {
   const { listBoxRef = ref, state } = props
   const { listBoxProps } = useListBox(props, state, listBoxRef)
 
+  let onScroll = (e: React.UIEvent) => {
+    // console.log(e.currentTarget.scrollHeight - e.currentTarget.clientHeight * 2, e.currentTarget.scrollHeight, e.currentTarget.clientHeight, e.currentTarget.scrollTop)
+    let scrollOffset = 
+      e.currentTarget.scrollHeight - e.currentTarget.clientHeight
+      if (e.currentTarget.scrollTop > scrollOffset && props.onLoadMore) {
+        props.onLoadMore()
+      }
+  }
+
   return (
     <ul
       {...listBoxProps}
       ref={listBoxRef}
       className="max-h-72 overflow-auto outline-none"
+      onScroll={onScroll}
     >
       {[...state.collection].map((item) =>
         item.type === "section" ? (
@@ -47,6 +59,14 @@ function ListBoxSection({ section, state }: SectionProps) {
     heading: section.rendered,
     "aria-label": section["aria-label"]
   })
+
+  // let [eventss, setEvents] = React.useState([]);
+  // let {keyboardProps} = useKeyboard({
+  //   onKeyDown: (e) => setEvents((events) => [`key down: ${e.key}`, ...events]),
+  //   onKeyUp: (e) => setEvents((events) => [`key up: ${e.key}`, ...events])
+  // });
+
+  // console.log(eventss)
 
   return (
     <>

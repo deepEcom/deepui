@@ -1,8 +1,10 @@
 import * as React from "react";
+import { Spinner } from "@deepui/spinner"
 import { cx } from "@deepui/utils";
 import { SearchIcon, XIcon } from "@heroicons/react/solid";
 import type { ComboBoxProps } from "@react-types/combobox";
-import { useComboBox, useFilter, useButton, useSearchField } from "react-aria";
+import type { LoadingState } from "@react-types/shared";
+import { useComboBox, useFilter, useButton, useSearchField, FocusScope } from "react-aria";
 import { useLayer, mergeRefs } from "react-laag"
 import { useComboBoxState, useSearchFieldState } from "react-stately";
 
@@ -16,6 +18,8 @@ interface CustomComboBoxProps<T> extends ComboBoxProps<T> {
   wrapperClassName?: string
   inputClassName?: string
   buttonClassName?: string
+  loadingState?: LoadingState
+  onLoadMore?: () => void
 }
 
 function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>, ref: React.ForwardedRef<null>) {
@@ -29,6 +33,8 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
   let { inputProps, listBoxProps, labelProps } = useComboBox(
     {
       ...props,
+      allowsCustomValue: false,
+      disallowEmptySelection: true,
       // @ts-ignore
       inputRef,
       listBoxRef,
@@ -61,20 +67,6 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
   let { clearButtonProps } = useSearchField(searchProps, searchState, inputRef);
   let clearButtonRef = React.useRef(null);
   let { buttonProps } = useButton(clearButtonProps, clearButtonRef);
-  
-  const upHandler = (e: KeyboardEvent) => {
-    if (state.isOpen) {
-      e.stopPropagation()
-    }
-  }
-
-  React.useEffect(() => {
-    window.addEventListener("keyup", upHandler);
-    // Remove event listeners on cleanup
-    return () => {
-      window.removeEventListener("keyup", upHandler);
-    };
-  }, [])
 
   return (
     <div ref={layerProps.ref} className={cx("w-full relative mt-4", props.layerClassName)}>
@@ -87,24 +79,30 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
       <div
         className={cx(`w-full relative px-2 inline-flex flex-row items-center rounded-md overflow-hidden shadow-sm border-2`,  state.isFocused ? "border-primary-500" : "border-gray-300", props.wrapperClassName)}
       >
-        <SearchIcon aria-hidden="true" className="w-5 h-5 text-gray-500" />
-        <input
-          {...inputProps}
-          onClick={e => {
-            e.stopPropagation()
-          }}
-          ref={mergeRefs(inputRef, triggerProps.ref)}
-          style={{ boxShadow: "none" }}
-          className={cx("w-full shadow-none outline-none px-3 py-1 appearance-none  border-none", props.inputClassName)}
-        />
-        <button
-          {...buttonProps}
-          ref={clearButtonRef}
-          style={{ visibility: state.inputValue !== "" ? "visible" : "hidden" }}
-          className={cx("cursor-default text-gray-500 hover:text-gray-600", props.buttonClassName)}
-        >
-          <XIcon aria-hidden="true" className="w-4 h-4" />
-        </button>
+        <FocusScope contain={Boolean(state.inputValue && !state.selectedItem)} restoreFocus>
+        {props.loadingState === "loading" || props.loadingState === "filtering" ? (
+          <Spinner className="text-primary-500" />
+        ) :  <SearchIcon aria-hidden="true" className="w-5 h-5 text-gray-500" />}
+          <input
+            {...inputProps}
+            onPointerDown={e => {
+              e.stopPropagation()
+              inputRef && inputRef.current && inputRef.current.focus()
+            }}
+            onBlur={() => {}}
+            ref={mergeRefs(inputRef, triggerProps.ref)}
+            style={{ boxShadow: "none" }}
+            className={cx("w-full shadow-none outline-none px-3 py-1 appearance-none  border-none", props.inputClassName)}
+          />
+          <button
+            {...buttonProps}
+            ref={clearButtonRef}
+            style={{ visibility: state.inputValue !== "" ? "visible" : "hidden" }}
+            className={cx("cursor-default text-gray-500 hover:text-gray-600", props.buttonClassName)}
+          >
+            <XIcon aria-hidden="true" className="w-4 h-4" />
+          </button>
+        </FocusScope>
       </div>
       {state.isOpen && (
         <Popover
@@ -113,7 +111,7 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
           isOpen={state.isOpen}
           onClose={state.close}
         >
-          <ListBox {...listBoxProps} listBoxRef={listBoxRef} state={state} />
+          <ListBox {...listBoxProps} shouldUseVirtualFocus listBoxRef={listBoxRef} state={state} loadingState={props.loadingState} onLoadMore={props.onLoadMore} />
         </Popover>
       )}
     </div>

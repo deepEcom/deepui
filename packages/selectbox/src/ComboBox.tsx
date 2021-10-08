@@ -56,20 +56,6 @@ function ComboBoxBase<T extends object>(props: CustomComboBoxProps<T>, ref: Reac
     state
   )
 
-  const upHandler = (e: KeyboardEvent) => {
-    if (state.isOpen) {
-      e.stopPropagation()
-    }
-  }
-
-  React.useEffect(() => {
-    window.addEventListener("keyup", upHandler);
-    // Remove event listeners on cleanup
-    return () => {
-      window.removeEventListener("keyup", upHandler);
-    };
-  }, [])
-
   const { buttonProps } = useButton({ ...buttonTriggerProps, isDisabled: props.isDisabled }, buttonRef)
 
   return (
@@ -83,9 +69,7 @@ function ComboBoxBase<T extends object>(props: CustomComboBoxProps<T>, ref: Reac
       <div
         className={cx(`w-full relative inline-flex flex-row rounded-md overflow-hidden shadow-sm border-2`, state.isFocused ? "border-primary-500" : "border-gray-300", props.wrapperClassName)}
       >
-        <input {...inputProps} onClick={e => {
-          e.stopPropagation()
-        }} aria-label="select" ref={mergeRefs(inputRef, triggerProps.ref)} className={cx("w-full outline-none px-3 py-1 border-none", props.inputClassName)} />
+        <input {...inputProps} aria-label="select" ref={mergeRefs(inputRef, triggerProps.ref)} className={cx("w-full outline-none px-3 py-1 border-none", props.inputClassName)} />
         <button
           {...buttonProps}
           ref={mergeRefs(buttonRef, triggerProps.ref)}

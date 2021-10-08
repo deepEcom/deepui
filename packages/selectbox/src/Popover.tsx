@@ -1,6 +1,7 @@
 import { cx } from "@deepui/utils"
 import * as React from "react"
-import { DismissButton, FocusScope, useOverlay } from "react-aria"
+import { DismissButton, useOverlay, OverlayContainer } from "react-aria"
+
 
 interface PopoverProps {
   popoverRef?: React.RefObject<HTMLDivElement>
@@ -20,7 +21,7 @@ export function Popover(props: PopoverProps) {
     {
       isOpen,
       onClose,
-      shouldCloseOnBlur: true,
+      // shouldCloseOnBlur: true,
       isDismissable: false
     },
     popoverRef
@@ -29,7 +30,6 @@ export function Popover(props: PopoverProps) {
   // Add a hidden <DismissButton> component at the end of the popover
   // to allow screen reader users to dismiss the popup easily.
   return (
-    <FocusScope restoreFocus>
       <div
         {...overlayProps}
         ref={popoverRef}
@@ -38,6 +38,5 @@ export function Popover(props: PopoverProps) {
         {children}
         <DismissButton onDismiss={onClose} />
       </div>
-    </FocusScope>
   )
 }
