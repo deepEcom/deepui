@@ -87,6 +87,7 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
             {...inputProps}
             onPointerDown={e => {
               e.stopPropagation()
+              // @ts-ignore
               inputRef && inputRef.current && inputRef.current.focus()
             }}
             onBlur={() => {}}
