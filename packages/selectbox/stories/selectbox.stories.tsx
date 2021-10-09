@@ -133,7 +133,7 @@ const ComboBoxD = () => {
     }
   });
   return <div>
-      <SearchAutocomplete label="Search"
+      <SearchAutocomplete
         ref={inputRef}
         items={list.items}
         inputValue={list.filterText}

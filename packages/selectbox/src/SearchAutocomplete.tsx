@@ -69,13 +69,13 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
   let { buttonProps } = useButton(clearButtonProps, clearButtonRef);
 
   return (
-    <div ref={layerProps.ref} className={cx("w-full relative mt-4", props.layerClassName)}>
-      <label
+    <div ref={layerProps.ref} className={cx("w-full relative", props.layerClassName)}>
+      {props.label && <label
         {...labelProps}
         className="block text-sm font-medium text-gray-700 text-left"
       >
         {props.label}
-      </label>
+      </label>}
       <div
         className={cx(`w-full relative px-2 inline-flex flex-row items-center rounded-md overflow-hidden shadow-sm border-2`,  state.isFocused ? "border-primary-500" : "border-gray-300", props.wrapperClassName)}
       >

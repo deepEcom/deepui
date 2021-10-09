@@ -84,7 +84,7 @@ function TableColumnHeader({column, state, className}) {
       //   cursor: 'default'
       // }}
       className={cx([
-        `px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider`,
+        `px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider`,
         isFocusVisible ? 'border border-primary-500' : 'border-none',
         className
       ])}
@@ -142,7 +142,7 @@ function TableCell({cell, state, className}) {
       //   outline: isFocusVisible ? '2px solid orange' : 'none',
       //   cursor: 'default'
       // }}
-      className={cx("px-6 py-4 whitespace-nowrap", className)}
+      className={cx("px-3 py-4 whitespace-nowrap", className)}
       ref={ref}>
       {cell.rendered}
     </td>
