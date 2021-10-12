@@ -53,6 +53,14 @@ interface IRadioProps<T = HTMLInputElement> extends DefaultProps {
    * The children is the label to be displayed to the right of the radio.
    */
   children?: React.ReactNode;
+  /*
+  * Label Classnames if needed to be extended
+  */
+  labelClassName?: string;
+  /*
+  * Label Classnames if needed to be extended
+  */
+  containerClassName?: string;
 }
 
 export type RadioProps = IRadioProps &
@@ -73,6 +81,8 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((props, ref)
     onChange,
     children,
     className,
+    labelClassName,
+    containerClassName,
     ...rest
   } = props;
 
@@ -92,8 +102,9 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((props, ref)
   return (
     <label
       className={cx(
-        "inline-flex align-top items-center",
-        disabled && "cursor-not-allowed"
+        "inline-flex align-top items-center w-full",
+        disabled && "cursor-not-allowed",
+        containerClassName
       )}
     >
       <input
@@ -122,8 +133,10 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((props, ref)
       {children && (
         <span
           className={cx(
+            "flex-1",
             radioLabelClasses,
-            disabled ? "opacity-40" : "opacity-100"
+            disabled ? "opacity-40" : "opacity-100",
+            labelClassName
           )}
         >
           {children}
