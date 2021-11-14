@@ -105,6 +105,8 @@ function TableRow({item, children, state, className, backgroundClassFn }) {
   let {rowProps} = useTableRow({node: item}, state, ref);
   let {isFocusVisible, focusProps} = useFocusRing();
 
+  // console.log(item)
+
   return (
     <tr
       // style={{
@@ -117,7 +119,7 @@ function TableRow({item, children, state, className, backgroundClassFn }) {
       //   color: isSelected ? 'white' : null,
       //   outline: isFocusVisible ? '2px solid orange' : 'none'
       // }}
-      className={cx(backgroundClassFn ? backgroundClassFn({ isSelected, isFocusVisible, index: item.index }) : [
+      className={cx(backgroundClassFn ? backgroundClassFn({ isSelected, isFocusVisible, index: item.index, value: item.value }) : [
         isSelected ? `bg-primary-100 text-white` : item.index % 2 ? 'bg-gray-50' : 'bg-white',
         isFocusVisible ? 'outline outline-black' : 'outline-none',
         className
