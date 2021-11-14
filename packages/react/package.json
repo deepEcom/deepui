@@ -1,6 +1,6 @@
 {
   "name": "@deepui/react",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "sideEffects": false,
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -62,7 +62,7 @@
     "@deepui/spinner": "0.1.6",
     "@deepui/stacked-carousel": "0.1.0",
     "@deepui/switch": "0.1.9",
-    "@deepui/table": "0.1.1",
+    "@deepui/table": "0.1.2",
     "@deepui/tag": "0.1.8",
     "@deepui/theme": "0.3.1",
     "@deepui/utils": "^0.1.0"

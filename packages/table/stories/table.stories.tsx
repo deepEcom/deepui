@@ -62,7 +62,10 @@ export const heightTest = () => {
   return (
     <div ref={scrollRef} style={{ height: 300, overflow: 'hidden' }}>
       <input aria-label="Focusable before" placeholder="Focusable before" />
-      <Table scrollRef={scrollRef} aria-label="Table with selection">
+      <Table scrollRef={scrollRef} aria-label="Table with selection" bodyRowBackgroundClassFn={() => {
+        // console.log(props)
+        return "bg-white"
+      }}>
         <TableHeader columns={columns}>
           {column => (
             <Column key={column.uid}>

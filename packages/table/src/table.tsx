@@ -32,7 +32,7 @@ export function Table(props) {
       </TableRowGroup>
       <TableRowGroup ref={bodyRef} type="tbody" className={cx("bg-white divide-y divide-gray-200", props.bodyRowGroupClassName)}>
         {[...collection.body.childNodes].map(row => (
-          <TableRow key={row.key} item={row} state={state} className={cx(props.bodyRowClassName)}>
+          <TableRow key={row.key} item={row} state={state} className={props.bodyRowClassName} backgroundClassFn={props.bodyRowBackgroundClassFn}>
             {[...row.childNodes].map(cell =>
               cell.props.isSelectionCell
                 ? <TableCheckboxCell key={cell.key} cell={cell} state={state} className={cx(props.selectClassName)} />
@@ -99,7 +99,7 @@ function TableColumnHeader({column, state, className}) {
   );
 }
 
-function TableRow({item, children, state, className}) {
+function TableRow({item, children, state, className, backgroundClassFn }) {
   let ref = useRef();
   let isSelected = state.selectionManager.isSelected(item.key);
   let {rowProps} = useTableRow({node: item}, state, ref);
@@ -117,8 +117,8 @@ function TableRow({item, children, state, className}) {
       //   color: isSelected ? 'white' : null,
       //   outline: isFocusVisible ? '2px solid orange' : 'none'
       // }}
-      className={cx([
-        isSelected ? 'bg-primary-100 text-white' : item.index % 2 ? 'bg-gray-50' : 'bg-white',
+      className={cx(backgroundClassFn ? backgroundClassFn({ isSelected, isFocusVisible, index: item.index }) : [
+        isSelected ? `bg-primary-100 text-white` : item.index % 2 ? 'bg-gray-50' : 'bg-white',
         isFocusVisible ? 'outline outline-black' : 'outline-none',
         className
       ])}
