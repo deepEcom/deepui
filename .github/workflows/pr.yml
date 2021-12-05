@@ -37,7 +37,7 @@ jobs:
         run: yarn build
 
       - name: Publish to github npm
-        uses: changesets/action@master
+        uses: changesets/action@v1
         with:
           publish: yarn release
         env:
