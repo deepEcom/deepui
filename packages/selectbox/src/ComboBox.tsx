@@ -1,5 +1,5 @@
 import { cx } from "@deepui/utils";
-import { ChevronDownIcon } from "@heroicons/react/solid"
+import { ChevronDownIcon } from "@deepui/icon"
 import { useComboBoxState } from "@react-stately/combobox"
 import type { ComboBoxProps } from "@react-types/combobox"
 import * as React from "react"
@@ -79,7 +79,7 @@ function ComboBoxBase<T extends object>(props: CustomComboBoxProps<T>, ref: Reac
           ? "border-primary-500 text-primary-600"
           : "border-gray-300 text-gray-500", props.buttonClassName)}
         >
-          <ChevronDownIcon className="w-5 h-5" aria-hidden="true" />
+          <ChevronDownIcon label="ChevronDownIcon" className="w-5 h-5" aria-hidden="true" />
         </button>
       </div>
       {state.isOpen && (

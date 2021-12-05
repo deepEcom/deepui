@@ -3,11 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.1.15](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.15...@deepui/react@0.1.16) (2021-11-14)
+## [0.1.17](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.16...@deepui/react@0.1.17) (2021-12-05)
+### Features
+* **table:** updated icons and remove heroicon dependecies from selectbox components
+* 
+
+## [0.1.16](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.15...@deepui/react@0.1.16) (2021-11-14)
 ### Features
 * **table:** updated table component
 * 
-## [0.1.14](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.14...@deepui/react@0.1.15) (2021-09-18)
+## [0.1.15](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.14...@deepui/react@0.1.15) (2021-09-18)
 ### Features
 
 * **selectbox:** add selectbox component

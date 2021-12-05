@@ -1,4 +1,4 @@
-import { CheckIcon } from "@heroicons/react/solid"
+import { CheckIcon } from "@deepui/icon"
 import type { AriaListBoxOptions } from "@react-aria/listbox"
 import type { ListState } from "@react-stately/list"
 import type { LoadingState, Node } from "@react-types/shared"
@@ -116,7 +116,7 @@ function Option({ item, state }: OptionProps) {
     >
       {item.rendered}
       {isSelected && (
-        <CheckIcon aria-hidden="true" className="w-5 h-5 text-primary-600" />
+        <CheckIcon label="CheckIcon" aria-hidden="true" className="w-5 h-5 text-primary-600" />
       )}
     </li>
   )

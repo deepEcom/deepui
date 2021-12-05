@@ -1,6 +1,6 @@
 import * as React from "react";
+import { SelectorIcon } from "@deepui/icon";
 import { cx } from "@deepui/utils";
-import { SelectorIcon } from "@heroicons/react/solid";
 import type { AriaSelectProps } from "@react-types/select";
 import {
   useSelect,
@@ -85,6 +85,7 @@ export function SelectBox<T extends object>(props: CustomAriaSelectProps<T>) {
             : "Select an option"}
         </span>
         <SelectorIcon
+          label="SelectIcon"
           className={`w-5 h-5 ${
             isFocusVisible ? "text-pink-500" : "text-gray-500"
           }`}

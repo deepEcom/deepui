@@ -1,7 +1,7 @@
 import * as React from "react";
+import { SearchIcon, XIcon } from "@deepui/icon"
 import { Spinner } from "@deepui/spinner"
 import { cx } from "@deepui/utils";
-import { SearchIcon, XIcon } from "@heroicons/react/solid";
 import type { ComboBoxProps } from "@react-types/combobox";
 import type { LoadingState } from "@react-types/shared";
 import { useComboBox, useFilter, useButton, useSearchField, FocusScope } from "react-aria";
@@ -82,7 +82,7 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
         <FocusScope contain={Boolean(state.inputValue && !state.selectedItem)} restoreFocus>
         {props.loadingState === "loading" || props.loadingState === "filtering" ? (
           <Spinner className="text-primary-500" />
-        ) :  <SearchIcon aria-hidden="true" className="w-5 h-5 text-gray-500" />}
+        ) :  <SearchIcon label="Search Icon" aria-hidden="true" className="w-5 h-5 text-gray-500" />}
           <input
             {...inputProps}
             onPointerDown={e => {
@@ -101,7 +101,7 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
             style={{ visibility: state.inputValue !== "" ? "visible" : "hidden" }}
             className={cx("cursor-default text-gray-500 hover:text-gray-600", props.buttonClassName)}
           >
-            <XIcon aria-hidden="true" className="w-4 h-4" />
+            <XIcon label="XIcon" aria-hidden="true" className="w-4 h-4" />
           </button>
         </FocusScope>
       </div>
