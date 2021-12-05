@@ -13,6 +13,9 @@
   "directories": {
     "doc": "docs"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@deepecom"
+  },
   "scripts": {
     "clean": "lerna clean --yes && rm -rf node_modules",
     "clean-dist": "yarn lerna exec -- rimraf dist",

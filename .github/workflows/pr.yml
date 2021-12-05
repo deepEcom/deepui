@@ -1,7 +1,7 @@
 name: PR Workflow
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -20,6 +20,8 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 12.x
+          registry-url: https://npm.pkg.github.com/
+          scope: '@deepecom'
 
       - name: Load Yarn cache
         uses: actions/cache@v2
