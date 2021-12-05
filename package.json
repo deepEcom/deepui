@@ -1,6 +1,5 @@
 {
   "name": "deepui",
-  "private": true,
   "version": "1.0.0",
   "workspaces": {
     "packages": [
@@ -14,6 +13,7 @@
     "doc": "docs"
   },
   "publishConfig": {
+    "access": "restricted",
     "registry": "https://npm.pkg.github.com/@deepecom"
   },
   "scripts": {
