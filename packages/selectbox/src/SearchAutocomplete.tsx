@@ -1,17 +1,16 @@
+import type { ComboBoxProps } from "@react-types/combobox";
+import type { LoadingState } from "@react-types/shared";
 import * as React from "react";
 import { SearchIcon, XIcon } from "@deepui/icon"
 import { Spinner } from "@deepui/spinner"
 import { cx } from "@deepui/utils";
-import type { ComboBoxProps } from "@react-types/combobox";
-import type { LoadingState } from "@react-types/shared";
+import { useComboBoxState } from "@react-stately/combobox"
+import { useSearchFieldState } from "@react-stately/searchfield"
 import { useComboBox, useFilter, useButton, useSearchField, FocusScope } from "react-aria";
 import { useLayer, mergeRefs } from "react-laag"
-import { useComboBoxState, useSearchFieldState } from "react-stately";
 
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
-
-export { Item } from "react-stately";
 
 interface CustomComboBoxProps<T> extends ComboBoxProps<T> {
   layerClassName?: string

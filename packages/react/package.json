@@ -1,6 +1,6 @@
 {
   "name": "@deepui/react",
-  "version": "0.1.17",
+  "version": "0.1.18-2",
   "sideEffects": false,
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -58,11 +58,11 @@
     "@deepui/notification": "0.1.9",
     "@deepui/pagination": "0.1.0",
     "@deepui/radio": "0.1.9",
-    "@deepui/selectbox": "0.1.3",
+    "@deepui/selectbox": "0.1.4-1",
     "@deepui/spinner": "0.1.6",
     "@deepui/stacked-carousel": "0.1.0",
     "@deepui/switch": "0.1.9",
-    "@deepui/table": "0.1.2",
+    "@deepui/table": "0.1.2-1",
     "@deepui/tag": "0.1.8",
     "@deepui/theme": "0.3.1",
     "@deepui/utils": "^0.1.0"

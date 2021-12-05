@@ -10,13 +10,11 @@ import {
   useFocusRing
 } from "react-aria";
 import { useLayer, mergeRefs } from "react-laag"
-import { useSelectState } from "react-stately";
+import { useSelectState } from "@react-stately/select";
 
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 
-
-export { Item } from "react-stately";
 
 interface  CustomAriaSelectProps<T> extends  AriaSelectProps<T> {
   layerClassName?: string

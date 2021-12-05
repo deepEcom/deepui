@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/deepecom/deepui/compare/@deepui/selectbox@0.1.3...@deepui/selectbox@0.1.4) (2021-12-05)
+
+**Note:** Updated react statley dependencies causing issues
+
 ## [0.1.3](https://github.com/deepecom/deepui/compare/@deepui/selectbox@0.1.2...@deepui/selectbox@0.1.3) (2021-12-05)
 
 **Note:** Updated Icons to not use heroicons and use deepIcon

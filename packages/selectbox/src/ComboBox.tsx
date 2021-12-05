@@ -1,7 +1,9 @@
-import { cx } from "@deepui/utils";
-import { ChevronDownIcon } from "@deepui/icon"
-import { useComboBoxState } from "@react-stately/combobox"
+
 import type { ComboBoxProps } from "@react-types/combobox"
+import { ChevronDownIcon } from "@deepui/icon"
+import { cx } from "@deepui/utils"
+export { Item, Section } from "@react-stately/collections"
+import { useComboBoxState } from "@react-stately/combobox"
 import * as React from "react"
 import { useButton, useComboBox, useFilter } from "react-aria"
 import { useLayer, mergeRefs } from "react-laag"
@@ -9,7 +11,6 @@ import { useLayer, mergeRefs } from "react-laag"
 import { ListBox } from "./ListBox"
 import { Popover } from "./Popover"
 
-export { Item, Section } from "react-stately"
 
 interface CustomComboBoxProps<T> extends ComboBoxProps<T> {
   layerClassName?: string

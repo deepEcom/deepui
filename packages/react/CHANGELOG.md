@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+## [0.1.18](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.17...@deepui/react@0.1.18) (2021-12-05)
+### Features
+* **selectbox:** updated react stately dependencies
+
 ## [0.1.17](https://github.com/deepecom/deepui/compare/@deepui/react@0.1.16...@deepui/react@0.1.17) (2021-12-05)
 ### Features
 * **table:** updated icons and remove heroicon dependecies from selectbox components
