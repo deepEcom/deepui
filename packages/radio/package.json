@@ -1,6 +1,6 @@
 {
   "name": "@deepui/radio",
-  "version": "0.1.9",
+  "version": "0.1.9-1",
   "sideEffects": false,
   "license": "MIT",
   "main": "dist/cjs/index.js",

@@ -111,7 +111,7 @@ function SearchAutocompleteBase<T extends object>(props: CustomComboBoxProps<T>,
           isOpen={state.isOpen}
           onClose={state.close}
         >
-          <ListBox {...listBoxProps} shouldUseVirtualFocus listBoxRef={listBoxRef} state={state} loadingState={props.loadingState} onLoadMore={props.onLoadMore} />
+          <ListBox {...listBoxProps} shouldUseVirtualFocus listBoxRef={listBoxRef} state={state as any} loadingState={props.loadingState} onLoadMore={props.onLoadMore} />
         </Popover>
       )}
     </div>

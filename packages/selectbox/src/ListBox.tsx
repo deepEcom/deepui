@@ -4,10 +4,10 @@ import type { ListState } from "@react-stately/list"
 import type { LoadingState, Node } from "@react-types/shared"
 import * as React from "react"
 import { useListBox, useListBoxSection, useOption } from "react-aria"
-import { useKeyboard } from "@react-aria/interactions";
+// import { useKeyboard } from "@react-aria/interactions";
 interface ListBoxProps extends AriaListBoxOptions<unknown> {
   listBoxRef?: React.RefObject<HTMLUListElement>
-  state: ListState<unknown>
+  state: ListState<any>
   loadingState?: LoadingState
   onLoadMore?: () => void
 }
@@ -19,7 +19,7 @@ interface SectionProps {
 
 interface OptionProps {
   item: Node<unknown>
-  state: ListState<unknown>
+  state: ListState<any>
 }
 
 export function ListBox(props: ListBoxProps) {

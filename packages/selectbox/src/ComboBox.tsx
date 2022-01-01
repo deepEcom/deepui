@@ -85,7 +85,7 @@ function ComboBoxBase<T extends object>(props: CustomComboBoxProps<T>, ref: Reac
       </div>
       {state.isOpen && (
         <Popover side={layerSide} popoverRef={popoverRef} isOpen={state.isOpen} onClose={state.close}>
-          <ListBox {...listBoxProps} listBoxRef={listBoxRef} state={state} />
+          <ListBox {...listBoxProps} listBoxRef={listBoxRef} state={state as any} />
         </Popover>
       )}
     </div>

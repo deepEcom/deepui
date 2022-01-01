@@ -91,7 +91,7 @@ export function SelectBox<T extends object>(props: CustomAriaSelectProps<T>) {
       </button>
       {state.isOpen && (
         <Popover side={layerSide} isOpen={state.isOpen} onClose={state.close}>
-          <ListBox {...menuProps} state={state} />
+          <ListBox {...menuProps} state={state as any} />
         </Popover>
       )}
     </div>
