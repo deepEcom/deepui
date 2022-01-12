@@ -3576,6 +3576,14 @@
     "@react-types/combobox" "^3.0.1"
     "@react-types/shared" "^3.8.0"
 
+"@react-stately/data@^3.4.3":
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/@react-stately/data/-/data-3.4.3.tgz#e2221176f0fff99ff4de9d18405c5372d773a8b2"
+  integrity sha512-JEyR9XLDlTiY/mQygzAvrwymvTibs9+stnUIcVYK3BWzou+ItHJIaoGFjxUtHWgodiHuGSkMDUKxv7srfYrWfQ==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-types/shared" "^3.10.0"
+
 "@react-stately/grid@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@react-stately/grid/-/grid-3.0.0.tgz#db60929a1a485289c632151bd896e70a88679db6"
