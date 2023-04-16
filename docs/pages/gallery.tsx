@@ -60,6 +60,7 @@ import {
   UserCircleIcon,
   BellIcon,
   ShieldCheckIcon,
+  // @ts-expect-error types
 } from "@heroicons/react/outline";
 import * as Slider from "@radix-ui/react-slider";
 import * as Tabs from "@radix-ui/react-tabs";

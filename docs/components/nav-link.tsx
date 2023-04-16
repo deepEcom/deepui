@@ -15,7 +15,8 @@ export const NavLink = ({
 
   return (
     <Link passHref {...props}>
-      {typeof children === "function" ? children(isActive) : children}
+      {  // @ts-expect-error reactNode not function
+      children && typeof children === "function" ? children(isActive) : children}
     </Link>
   );
 };

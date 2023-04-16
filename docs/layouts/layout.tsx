@@ -73,13 +73,13 @@ function Header() {
         </IconButton>
         <div className="flex items-center justify-end flex-1">
           <Link href="/getting-started" passHref>
-            <a className="relative inline-flex items-center justify-center flex-shrink-0 w-8 h-8 align-top rounded-base bg-neutral-800">
+            <div className="relative inline-flex items-center justify-center flex-shrink-0 w-8 h-8 align-top rounded-base bg-neutral-800">
               <img
                 className="object-cover w-full h-full rounded-base"
                 src="/deepecom.svg"
                 alt="logo"
               />
-            </a>
+            </div>
           </Link>
         </div>
       </div>

@@ -61,7 +61,7 @@ const Notification = React.forwardRef<HTMLDivElement, NotificationProps>(
           <span className={clsx("notification-icon", cx)}>
             {customIcon ? (
               customIcon
-            ) : (
+            ) as any : (
               <Icon label={label} as={customIcon || icon} className="w-5 h-5" />
             )}
           </span>
@@ -93,7 +93,7 @@ const Notification = React.forwardRef<HTMLDivElement, NotificationProps>(
             >
               {customCloseIcon ? (
                 customCloseIcon
-              ) : (
+              ) as any : (
                 <Icon
                   as={XIcon}
                   label="x"

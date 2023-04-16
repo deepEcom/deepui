@@ -1,4 +1,4 @@
-import { DuplicateIcon, CheckIcon } from "@heroicons/react/outline";
+import { Check, Copy } from "lucide-react";
 import { IconButton, Icon, IconButtonProps } from "@deepui/react";
 import * as React from "react";
 import useClipboard from "react-use-clipboard";
@@ -15,9 +15,9 @@ export function ClipBoardButton({ value = "", ...props }: ClipBoardButtonProps) 
   return(
     <IconButton variant="solid" onClick={setCopied} {...props}>
       {isCopied ? (
-        <Icon as={CheckIcon} className="w-5 h-5 text-primary-200" label="check" />
+        <Icon as={Check} className="w-5 h-5 text-primary-200" label="check" />
       ) : (
-        <Icon as={DuplicateIcon} className="w-5 h-5" label="duplicate" />
+        <Icon as={Copy} className="w-5 h-5" label="duplicate" />
       )}
     </IconButton>
   )

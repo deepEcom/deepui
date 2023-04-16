@@ -33,15 +33,12 @@
     "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
     "lint:types": "tsc --noEmit"
   },
-  "devDependencies": {
-    "react": "^17.0.2"
-  },
   "dependencies": {
     "@deepui/spinner": "0.1.6",
     "@deepui/theme": "0.3.1",
     "@deepui/utils": "^0.1.0"
   },
   "peerDependencies": {
-    "react": ">=16.8.6"
+    "react": ">=18.2.0"
   }
 }

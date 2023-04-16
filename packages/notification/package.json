@@ -33,9 +33,6 @@
     "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
     "lint:types": "tsc --noEmit"
   },
-  "devDependencies": {
-    "react": "^17.0.2"
-  },
   "dependencies": {
     "@deepui/button": "0.1.7",
     "@deepui/icon": "0.1.7",
@@ -44,6 +41,6 @@
     "@deepui/utils": "^0.1.0"
   },
   "peerDependencies": {
-    "react": ">=16.8.6"
+    "react": ">=18.2.0"
   }
 }

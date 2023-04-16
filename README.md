@@ -48,6 +48,5 @@ All contributions are welcome. Even, if you notice wrong information, typos, or 
 ## Credit
 
 This open-source UI component library was heavily inspired [PrimerCSS](https://primer.style/) & [ChakraUI](https://chakra-ui.com). I'd like to thank all of them for their amazing work.
-## License
 
-MIT License © 2021 [pepelele](https://github.com/pepelele)
+[pepelele](https://github.com/pepelele)

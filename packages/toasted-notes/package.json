@@ -33,14 +33,11 @@
     "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
     "lint:types": "tsc --noEmit"
   },
-  "devDependencies": {
-    "react": "^17.0.1"
-  },
   "dependencies": {
-    "@reach/alert": "^0.15.0",
-    "react-spring": "^9.2.3"
+    "@reach/alert": "^0.18.0",
+    "react-spring": "^9.7.1"
   },
   "peerDependencies": {
-    "react": ">=16.8.6"
+    "react": ">=18.2.0"
   }
 }

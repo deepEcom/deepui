@@ -46,24 +46,24 @@ import {
 } from "@headlessui/react";
 import {
   GiftIcon,
-  ArrowsExpandIcon,
-  DuplicateIcon,
-  ShareIcon,
+  ExpandIcon,
+  CopyIcon,
+  Share2Icon,
   CalendarIcon,
   TagIcon,
-  HashtagIcon,
+  HashIcon,
   CheckIcon,
-  SelectorIcon,
+  ChevronsUpDownIcon,
   XIcon,
   SunIcon,
   StarIcon,
   MoonIcon,
   ChevronUpIcon,
   ChevronRightIcon,
-  UserCircleIcon,
+  ContactIcon,
   BellIcon,
-  ShieldCheckIcon,
-} from "@heroicons/react/outline";
+  ShieldCheckIcon
+} from "lucide-react";
 import * as Popover from "@radix-ui/react-popover";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import * as Tabs from "@radix-ui/react-tabs";
@@ -73,21 +73,21 @@ import * as Slider from "@radix-ui/react-slider";
 const scope = {
   // Icon
   GiftIcon,
-  ArrowsExpandIcon,
-  DuplicateIcon,
-  ShareIcon,
+  ExpandIcon,
+  CopyIcon,
+  Share2Icon,
   CalendarIcon,
   TagIcon,
-  HashtagIcon,
+  HashIcon,
   CheckIcon,
-  SelectorIcon,
+  ChevronsUpDownIcon,
   XIcon,
   SunIcon,
   StarIcon,
   MoonIcon,
   ChevronUpIcon,
   ChevronRightIcon,
-  UserCircleIcon,
+  ContactIcon,
   BellIcon,
   ShieldCheckIcon,
   // Components

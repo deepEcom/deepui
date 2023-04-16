@@ -16,6 +16,8 @@ import Layout from "@layouts/layout";
 import { getSeo } from "@utils/seo";
 import * as gtag from "@libs/gtag";
 
+const isSSREnabled = () => typeof window === 'undefined'; 
+
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const seo = getSeo();

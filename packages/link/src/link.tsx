@@ -21,7 +21,7 @@ export const Link = React.forwardRef<unknown, any>((props, ref) => {
     external,
     onClick,
     className,
-    as: Comp = "a",
+    as: Comp = "button",
     ...rest
   } = props;
   const externalProps = external

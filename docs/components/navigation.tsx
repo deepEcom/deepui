@@ -1,10 +1,10 @@
 import { Transition } from "@headlessui/react";
 import {
-  ViewGridIcon,
-  BeakerIcon,
-  ColorSwatchIcon,
-  BookOpenIcon
-} from "@heroicons/react/outline";
+  LayoutGrid,
+  FlaskConical,
+  Palette,
+  BookOpenCheck
+} from "lucide-react";
 import { Button, Icon, cx } from "@deepui/react";
 import * as React from "react";
 
@@ -20,18 +20,18 @@ import components from "./components";
 
 export const mainNavigation = [
   {
-    icon: ViewGridIcon,
+    icon: LayoutGrid,
     title: "Getting Started",
     path: "/"
   },
   {
-    icon: ViewGridIcon,
+    icon: LayoutGrid,
     title: "Getting Started",
     path: "/getting-started",
     hidden: true
   },
   {
-    icon: BeakerIcon,
+    icon: FlaskConical,
     title: "Theming",
     path: "/theming"
   },
@@ -42,20 +42,14 @@ export const mainNavigation = [
     hidden: true
   },
   {
-    icon: ColorSwatchIcon,
+    icon: Palette,
     title: "Color Mode",
     path: "/color-mode"
   },
   {
-    icon: BookOpenIcon,
+    icon: BookOpenCheck,
     title: "Architecture",
     path: "/architecture"
-  },
-  {
-    icon: null,
-    title: "Architecture",
-    path: "/architecture",
-    hidden: true
   }
 ];
 
@@ -143,7 +137,8 @@ export function Navigation() {
 
                     return (
                       <NavLink key={idx} passHref href={link.path}>
-                        {(active: boolean) => (
+                        { // @ts-expect-error not assignable to reactNode
+                        (active: boolean) => (
                           <a
                             className={cx(
                               "relative flex items-center w-full px-2 py-1.5 transition-colors duration-150 ease-in-out font-medium bg-transparent border-0 rounded cursor-base text-sm",
@@ -177,7 +172,8 @@ export function Navigation() {
                     <div className="flex flex-col space-y-0">
                       {comp.components.map(c => (
                         <NavLink key={c.key} href={`/${c.key}`} passHref>
-                          {(active: boolean) => (
+                          { // @ts-expect-error not assignable to reactNode
+                          (active: boolean) => (
                             <a
                               className={cx(
                                 "relative flex items-center w-full px-2 py-1 bg-transparent border-0 rounded cursor-base text-sm",

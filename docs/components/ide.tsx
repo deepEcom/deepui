@@ -1,5 +1,5 @@
 import { Icon, cx } from "@deepui/react";
-import { ChevronUpIcon } from "@heroicons/react/outline";
+import { ChevronUp } from "lucide-react";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as React from "react";
 import { LiveProvider, LiveContext, LiveError } from "react-live";
@@ -108,7 +108,7 @@ function Editor({
               )}
             >
               <Icon
-                as={ChevronUpIcon}
+                as={ChevronUp}
                 label="chevron-up"
                 className={cx(
                   "w-4 h-4",

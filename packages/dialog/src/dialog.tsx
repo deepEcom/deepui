@@ -366,7 +366,9 @@ export const Dialog = ({
     </DialogContainer>
   )
 
-  return inTheDom && portalTarget.current
+  return <>
+  {inTheDom && portalTarget.current
     ? ReactDOM.createPortal(dialog, portalTarget.current)
-    : null
+    : null}
+  </>
 }
