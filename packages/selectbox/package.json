@@ -34,7 +34,8 @@
     "lint:types": "tsc --noEmit"
   },
   "devDependencies": {
-    "react": "^17.0.2"
+    "react": "^17.0.2",
+    "@react-stately/data": "^3.9.0"
   },
   "dependencies": {
     "@deepui/icon": "0.1.8",

@@ -2,7 +2,7 @@ import { Button } from "../src";
 import { Announcement } from "./announcement";
 
 export default {
-  title: "Button",
+  title: "Design System/Primitive/Button",
   component: Button,
   parameters: {
     controls: { hideNoControlsWarning: true },

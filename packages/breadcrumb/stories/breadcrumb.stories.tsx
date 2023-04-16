@@ -1,7 +1,7 @@
 import { Breadcrumb } from "../src";
 
 export default {
-  title: "Breadcrumb",
+  title: "Design System/Primitive/Breadcrumb",
   component: Breadcrumb,
   parameters: {
     controls: { hideNoControlsWarning: true },

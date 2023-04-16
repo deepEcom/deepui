@@ -1,8 +1,8 @@
 import { useRef, useEffect } from "react"
-import { ComboBox, Item, SelectBox, SearchAutocomplete, Section } from "../src";
 import {Cell, Column, Row, TableBody, TableHeader} from '@react-stately/table';
+import { useAsyncList } from "@react-stately/data";
 import { Table } from "../../table/src/index";
-import { useAsyncList } from "react-stately";
+import { ComboBox, Item, SelectBox, SearchAutocomplete, Section } from "../src";
 
 export default {
   title: "SelectBox",

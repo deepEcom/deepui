@@ -1,7 +1,7 @@
 import { Badge } from "../src";
 
 export default {
-  title: "Badge",
+  title: "Design System/Primitive/Badge",
   component: Badge,
   parameters: {
     controls: { hideNoControlsWarning: true },

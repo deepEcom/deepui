@@ -1,7 +1,7 @@
 import { Alert } from "../src";
 
 export default {
-  title: "Alert",
+  title: "Design System/Primitive/Alert",
   component: Alert,
   parameters: {
     controls: { hideNoControlsWarning: true },

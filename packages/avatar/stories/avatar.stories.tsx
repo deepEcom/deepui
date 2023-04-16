@@ -1,7 +1,7 @@
 import { Avatar } from "../src";
 
 export default {
-  title: "Avatar",
+  title: "Design System/Primitive/Avatar",
   component: Avatar,
   parameters: {
     controls: { hideNoControlsWarning: true },
